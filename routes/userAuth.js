@@ -6,7 +6,7 @@ const passport = require('passport')
 
 const sanitize = require('mongo-sanitize')
 
-const base = "http://localhost:8000/"
+const base = "http://localhost:7777/"
 
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
 const FacebookStrategy = require('passport-facebook').Strategy
@@ -41,12 +41,11 @@ else {
     const hashedPassword = await bcrypt.hash(profile.id + profile.displayName, salt)
 
     const user = new User({ 
-        uname:profile.name.givenName,
+        name:profile.name.givenName,
         dname:profile.displayName,
         email:email,
         password:hashedPassword,
-        profileImg:profile._json.picture,
-        theme:"light",
+        theme: "0",
         kind:[
             {
                 provider:profile.provider,
@@ -99,12 +98,11 @@ passport.use( new FacebookStrategy({
         const hashedPassword = await bcrypt.hash(profile.id + profile.displayName, salt);
 
         const user = new User({ 
-            uname:name,
+            name:name,
             dname:name,
             email:"",
             password:hashedPassword,
-            profileImg:profile.photos[0].value,
-            theme:"light",
+            theme:"0",
             kind:[
                 {
                     provider:profile.provider,

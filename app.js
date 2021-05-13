@@ -1,39 +1,41 @@
 
-const dotenv = require('dotenv')
-dotenv.config()
+const dotenv = require('dotenv');
+dotenv.config();
 
 //libraries
-const express= require('express')
-const path = require('path')
-const app= express()
+const express= require('express');
+const path = require('path');
+const app= express();
 
 //disable X-powered-by header
-app.disable('x-powered-by')
+app.disable('x-powered-by');
 
-const rate_limit = require('express-rate-limit')
-const xss = require('xss-clean')
-// const csrf = require('csurf')
-const CryptoJS = require('crypto-js')
-const cors = require('cors')
-const cookie_parser = require('cookie-parser')
-const body_parser = require('body-parser')
-const boxen = require('boxen')
-// const helmet = require('helmet')
-const mongoose = require('mongoose')
-const session = require('express-session')
-const MongoStore = require('connect-mongo')(session)
-const { v4 : uuidv4 } = require('uuid')
-const nocache = require('nocache')
-const sanitize = require('mongo-sanitize')
-const fs = require('fs')
+const rate_limit = require('express-rate-limit');
+const xss = require('xss-clean');
+// const csrf = require('csurf');
+const CryptoJS = require('crypto-js');
+const cors = require('cors');
+const cookie_parser = require('cookie-parser');
+const cookieSession = require('cookie-session');
+const body_parser = require('body-parser');
+const boxen = require('boxen');
+// const helmet = require('helmet');
+const mongoose = require('mongoose');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+const { v4 : uuidv4 } = require('uuid');
+const nocache = require('nocache');
+const sanitize = require('mongo-sanitize');
+const fs = require('fs');
 
-const {print} = require('./helpers/getApiStack')
+const {print} = require('./helpers/getApiStack');
 
 //models
 
 //declare routes
-const csrf = require('./routes/csrf')
-const admin = require('./routes/auth')
+const csrf = require('./routes/csrf');
+const admin = require('./routes/auth');
+const events = require('./routes/event');
 
 const hbs = require('hbs')
 
@@ -51,7 +53,7 @@ hbs.registerHelper('json', function(obj) {
 app.set('view engine', 'hbs')
 
 //Port
-const PORT = 8000
+const PORT = 7777;
 
 let depth_limit = 2; //JSON parse depth 
 let limit_depth = (obj, current_depth, limit) => {
@@ -130,25 +132,36 @@ const limiter = rate_limit({
 app.set('views', path.join(__dirname, 'views'))
 // app.set('view engine', 'ejs')
 
+//login system middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+
 app.use('/success', session(express_session))
 app.use(express.json())
-app.use(cookie_parser())
+app.use(cookie_parser());
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key2']
+}))
 app.use(cors())
 
 app.use(express.static(__dirname+'/public'))
 
 //Middlewares
-require('./routes/userAuth.js')
-app.use('/api/csrf', csrf)
-app.use('/api/auth', admin)
-app.use(require('./routes'))
-app.use(express.static('views/images'))
+require('./routes/userAuth.js');
+app.use('/api/csrf', csrf);
+app.use('/api/auth', admin);
+app.use('/api/event', events);
+app.use(require('./routes'));
+app.use(express.static('views/images'));
 
-const api_stack = []
-app._router.stack.forEach(print.bind(null, [], api_stack))
+const api_stack = [];
+app._router.stack.forEach(print.bind(null, [], api_stack));
 
 app.get('/node-admin/api', async(req, res) => {
-    res.render('admin/api', { 'data' :  api_stack})
+    res.render('admin/api', { 'data' :  api_stack});
 })
 
 //serve static files
@@ -159,6 +172,37 @@ app.get('/node-admin/api', async(req, res) => {
 //   // fs.createReadStream(path.join(__dirname+'/client/build/index.html')).pipe(res)
 //   res.sendFile(path.join(__dirname+'/client/build/index.html'))
 // })
+
+
+
+//logout api
+app.get('/logout', function(req, res){
+  
+  req.logout();
+  console.log("Logged out!!");
+  return res.redirect('/');
+});
+
+//google login routes
+app.get('/google/login',
+  passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+//callback route
+app.get('/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), (req, res) => {
+  res.cookie("user",req.user._id);
+  res.redirect('/');
+});
+
+//facebook login routes
+app.get('/facebook/login', passport.authenticate('facebook', { scope : 'email' } ));
+
+//facebook callback route
+app.get('/facebook/callback', passport.authenticate('facebook', {failureRedirect: '/login' }), (req, res) => {
+  res.cookie("user",req.user._id);
+  res.redirect('/');
+});
+
+
 
 
 //set headers

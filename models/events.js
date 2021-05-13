@@ -5,9 +5,12 @@ const users_participating = mongoose.Schema({
 })
 
 const event = new mongoose.Schema({
-    name: String,
+    title: String,
+    description: String,
     date:String,
+    created:String,
     duration : String,
+    type: String, //Private or Public
     users : [users_participating]
 })
 
