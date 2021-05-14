@@ -21,7 +21,11 @@
 }
 .fc-col-header-cell-cushion {
     font-family: $font-2;
-    color: rgb(78, 78, 78);
+    font-weight: 500 !important;
+    color: rgb(56, 56, 56) !important;
+    &:hover {
+        cursor: default;
+    }
 }
 .fc-daygrid-day-number {
     color:  rgb(34, 34, 34);
@@ -52,9 +56,9 @@
 .fc-theme-standard th {
     border: none;
 }
-.fc-daygrid-body-unbalanced {
-    height: 10px !important;
-}
+// .fc-daygrid-body-unbalanced {
+//     height: 10px !important;
+// }
 .fc-col-header-cell-cushion  {
     text-decoration: none !important;
     color: black;
@@ -76,4 +80,64 @@
     font-family: $font-2;
     color: rgb(44, 44, 44);
     font-size: 17px !important;
+}
+
+
+//buttons
+.fc {
+    .fc-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    &-prev-button {
+        transition: all 0.12s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: black !important;
+        background-color: transparent !important;
+        border-radius: 0 !important;
+        border-right: none !important;
+        border-left: none !important;
+        padding :0.3rem !important;
+        margin-left: 0 !important;
+        // height: 30px;
+    }
+    &-today-button {
+        padding :0.3rem !important;
+        transition: all 0.12s;
+        color: black !important;
+        background-color: transparent !important;
+        margin-left: 0 !important;
+        border-radius: 0 !important;
+    }
+    &-next-button {
+        padding :0.3rem !important;
+        transition: all 0.12s;
+        margin-left: 0 !important;
+        color: black !important;
+        background-color: transparent !important;
+        border-radius: 0 !important;
+        border-right: none !important;
+        border-left:  none !important;
+    }
+    &-prevYear-button {
+        padding :0.3rem !important;
+        transition: all 0.12s;
+        margin-left: 0 !important;
+        color: black !important;
+        background-color: transparent !important;
+        border-top-right-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;  
+    }
+    &-nextYear-button {
+        padding :0.3rem !important;
+        transition: all 0.12s;
+        margin-left: 0 !important;
+        color: black !important;
+        background-color: transparent !important;
+        border-top-left-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;  
+    }
 }
