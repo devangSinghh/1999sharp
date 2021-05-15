@@ -3,6 +3,7 @@ import Calendar from '../components/calendar'
 
 import Navbar from '../components/Navbar'
 import Panel from '../components/panel'
+
 import ContextMenu from '../components/ContextMenu'
 
 class Dashboard extends Component {

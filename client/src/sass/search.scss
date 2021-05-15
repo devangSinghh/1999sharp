@@ -8,3 +8,51 @@
     border-radius: 0.5rem;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+
+//input tag 
+.event-search {
+    position: relative;
+    .icon {
+        color: rgba(grey, 0.4);
+        background-color: white;
+        position: absolute;
+        left: 0.4rem;
+        top: 0.54rem;
+    }
+    &-input {
+        height: 40px;
+        padding: 0.4rem 0.4rem 0.4rem 2.3rem;
+        border-radius: 0.3rem;
+        border: 1px solid rgb(202, 202, 202);
+        width: 80%;
+        transition: all 0.3s;
+        &:focus {
+            outline: none;
+            border: 2px solid rgb(23, 88, 228);
+        }
+        &::placeholder {
+            color: rgba(grey, 0.5);
+            padding-left: 1rem;
+        }
+    }
+
+    .event-add-icon {
+        margin-left: 0.4rem;
+        border-radius: 0.26rem;
+        background-color: #3F51B5;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        color: white;
+        width: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px !important;
+        transition: all 0.3s;
+        &:hover {
+            background-color: #2c3983;
+        }
+        &:active {
+           
+        }
+    }
+}

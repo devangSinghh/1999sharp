@@ -1,0 +1,39 @@
+.event-table {
+    margin-top: 1.5rem;
+    thead {
+        border-top-left-radius: 0.36rem !important;
+        border-top-right-radius: 0.36rem !important;
+    }
+    &-head {
+        width: 100%;
+        font-family: $font-4;
+        font-weight: 600 !important;
+        color: rgb(68, 68, 68);
+        background-color: rgba(rgb(219, 218, 218), 0.2);
+        border-top-left-radius: 0.36rem !important;
+        border-top-right-radius: 0.36rem !important; 
+        th {
+            padding: 0.4rem !important;
+            &:first-child {
+                border-top-left-radius: 0.36rem !important;
+                // border-bottom-left-radius: 0.36rem;
+            }
+            &:last-child {
+                border-top-right-radius: 0.36rem !important;
+                // border-bottom-right-radius: 0.36rem;
+            }
+        }
+    }
+    border-radius: 0.5rem;
+    transition: all 0.3s;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    &:hover {
+        // box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    }
+}
+
+.event-number {
+    font-family: $font-2;
+    font-size: 14px;
+    color: grey;
+}
