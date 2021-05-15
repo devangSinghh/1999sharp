@@ -1,0 +1,40 @@
+.dash-left-panel {
+    height: 100vh;
+    padding: 1rem;
+    background-color: rgb(255, 255, 255);
+    // box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-right: 2px solid rgb(241, 241, 241);
+
+    .divider {
+        margin: 1.6rem auto;
+    }
+}
+.add-event-form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    height: 20vh;
+}
+.context-menu {
+    // height: 8vh;
+    border-radius: 0.3rem;
+    width: 160px;
+    z-index: 2000;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    ul {
+        list-style: none;
+        padding-left:0;
+        margin: 0.6rem auto;
+        li {
+            padding: 0.3rem;
+            &:hover {
+                cursor: pointer;
+                background-color: rgba(rgb(165, 164, 164), 0.1);
+            }
+        }
+    }
+}

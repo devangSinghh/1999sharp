@@ -1,0 +1,97 @@
+.sideBar {
+    background-color: white;
+    list-style: none;
+    position: fixed;
+    top: 0;
+    width: 0;
+    height: 100%;
+    border-right: 2px solid rgb(228, 228, 228);
+    z-index: 1000;
+    overflow-x: hidden;
+    transition: all 0.3s;
+    a {
+        text-decoration: none;
+        color: rgba(rgb(71, 71, 71), 0.9);
+        font-size: 22px;
+        text-align: center;
+        &:hover {
+            text-decoration: none;
+            color: rgba(rgb(34, 34, 34), 0.8);
+        }
+
+        h5 {
+            padding: 0.5rem;
+            margin-top: 1rem;
+            background-color: rgb(106, 224, 240);
+            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+            .fa-arrow-right {
+                color: rgba(rgb(34, 34, 34), 0.8);
+            }
+        }
+    }
+    .sideBar-item {
+        padding: 1rem;
+        font-family: $font-2;
+    }
+    .back_to_home_sideBar {
+        margin-top: 3rem;
+        font-size: 14px;
+        padding: 0.4rem;
+        text-align: center;
+        background-color: rgba(rgb(18, 45, 56), 0.5);
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    .close_sidebar {
+        text-align: right;
+        .fa-times {
+            font-size: 23px;
+            padding: 0.3rem;
+            background-color: transparent;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    hr {
+        background-color: rgba(white, 0.3);
+        height: 1px;
+        margin: 1rem auto;
+    }
+}
+
+.sidebar-brand {
+    font-family: $font-2;
+    font-size: 20px;
+    margin: 0.5rem;
+    color: black;
+    font-weight: 600;
+}
+
+.sidebar-close-title {
+    width: 75%;
+}
+.sidebar-close-btn {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+
+    .fa-times {
+        font-size: 22px;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: rgb(97, 97, 97);
+        background-color: rgb(209, 209, 209);
+        border-radius: 50%;
+    }
+}
