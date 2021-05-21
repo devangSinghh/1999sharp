@@ -33,9 +33,10 @@ const {print} = require('./helpers/getApiStack')
 //models
 
 //declare routes
-const csrf = require('./routes/csrf')
-const admin = require('./routes/auth')
-const events = require('./routes/event')
+const csrf = require('./routes/csrf');
+const admin = require('./routes/auth');
+const events = require('./routes/event');
+const reso = require('./routes/reso');
 
 const hbs = require('hbs')
 
@@ -153,6 +154,7 @@ require('./routes/userAuth.js');
 app.use('/api/csrf', csrf);
 app.use('/api/auth', admin);
 app.use('/api/event', events);
+app.use('/api/reso',reso);
 app.use(require('./routes'));
 app.use(express.static('views/images'))
 
