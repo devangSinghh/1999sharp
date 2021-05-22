@@ -75,7 +75,7 @@ router.post('/new', async(req, res)=>{
             users : [req.body.userid]
         })
         const savedevent = await newevent.save();
-        const user = await User.findByIdAndUpdate(re.body.userid,{ 
+        const user = await User.findOneAndUpdate({userid:req.body.userid},{ 
             $push: {
                 event: savedevent._id
             }
@@ -113,7 +113,7 @@ router.post('/new', async(req, res)=>{
 })
 router.post('/delete/:eventid', async (req, res) => {
     const event = Events.findByIdAndRemove(req.params.eventid);
-    const user = User.findByIdAndUpdate(req.body.userid,{
+    const user = User.findOneAndUpdate({userid:req.body.userid},{
         events:{ 
             $pull:{
                 _id:req.params.eventid

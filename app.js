@@ -37,6 +37,7 @@ const csrf = require('./routes/csrf');
 const admin = require('./routes/auth');
 const events = require('./routes/event');
 const reso = require('./routes/reso');
+const pullreq = require('./routes/pullreq');
 
 const hbs = require('hbs')
 
@@ -155,6 +156,7 @@ app.use('/api/csrf', csrf);
 app.use('/api/auth', admin);
 app.use('/api/event', events);
 app.use('/api/reso',reso);
+app.use('/api/eventreq',pullreq);
 app.use(require('./routes'));
 app.use(express.static('views/images'))
 
@@ -190,7 +192,7 @@ app.get('/google/login',
 
 //callback route
 app.get('/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), (req, res) => {
-  res.cookie("user",req.user._id)
+  res.cookie("user",req.user.userid)
   res.redirect('/')
 })
 
@@ -199,7 +201,7 @@ app.get('/facebook/login', passport.authenticate('facebook', { scope : 'email' }
 
 //facebook callback route
 app.get('/facebook/callback', passport.authenticate('facebook', {failureRedirect: '/login' }), (req, res) => {
-  res.cookie("user",req.user._id)
+  res.cookie("user",req.user.userid)
   res.redirect('/')
 })
 

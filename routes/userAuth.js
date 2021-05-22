@@ -2,7 +2,8 @@ const bcrypt = require('bcryptjs')
 const cookieParser = require('cookie-parser')
 const User = require('../models/user')
 const refresh = require('passport-oauth2-refresh')
-const passport = require('passport')
+const passport = require('passport');
+const nanoid = require('nanoid');
 
 const sanitize = require('mongo-sanitize')
 
@@ -38,12 +39,18 @@ else {
 
     //Hash passwords
     const salt = await bcrypt.genSalt(10)
-    const hashedPassword = await bcrypt.hash(profile.id + profile.displayName, salt)
-
+    const hashedPassword = await bcrypt.hash(profile.id + profile.displayName, salt);
+    var userid = nanoid(10);
+    var chk = await User.findOne({userid: userid});
+    while(chk){
+        chk = await User.findOne({userid: userid});
+        userid=nanoid(10);
+    }
     const user = new User({ 
         name:profile.name.givenName,
         dname:profile.displayName,
         email:email,
+        userid:userid,
         password:hashedPassword,
         theme: "0",
         kind:[
@@ -96,11 +103,17 @@ passport.use( new FacebookStrategy({
         //Hash passwords
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(profile.id + profile.displayName, salt);
-
+        var userid = nanoid(10);
+        var chk = await User.findOne({userid: userid});
+        while(chk){
+            chk = await User.findOne({userid: userid});
+            userid=nanoid(10);
+        }
         const user = new User({ 
             name:name,
             dname:name,
             email:"",
+            userid:userid,
             password:hashedPassword,
             theme:"0",
             kind:[

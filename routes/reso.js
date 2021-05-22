@@ -12,7 +12,7 @@ router.post('/add',async (req, res)=>{
                 keepitup:[]
         })
         const savedreso = await newreso.save();
-        const user = await User.findOneAndUpdate({userid:req.body.useid},{
+        const user = await User.findOneAndUpdate({userid:req.body.userid},{
             $push:{
                 reso:savedreso._id
             }
@@ -40,7 +40,7 @@ router.post('/delete',async (req, res)=>{
     
     try{
         const ureso = await Reso.findByIdAndRemove(req.body.resoid);
-        const user = await User.findOneAndUpdate(req.body.userid,{
+        const user = await User.findOneAndUpdate({userid:req.body.userid},{
             $pull:{
                 reso:req.body.resoid
             }

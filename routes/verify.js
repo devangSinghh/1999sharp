@@ -14,7 +14,7 @@ var ses = new AWS.SES();
 router.post('/verify', async (req, res) => {
     try{
         const otp=otpGenerator.generate(6, { upperCase: false, specialChars: false, alphabets:false});
-        const user = await User.findByIdAndUpdate(req.body.userid,{
+        const user = await User.findOneAndUpdate({userid:req.body.userid},{
             $set:{
                 resetpass:otp
             }
@@ -50,7 +50,7 @@ router.post('/verify', async (req, res) => {
     }
 })
 router.post('/update', async (req, res) => {
-    const user = await User.findByIdAndUpdate(req.body.userid,{
+    const user = await User.findOneAndUpdate({userid:req.body.userid},{
         $set:{
             email:req.body.email
         }
@@ -58,7 +58,7 @@ router.post('/update', async (req, res) => {
 })
 router.post('/otp-verify', async (req, res) => {
     try{
-       const user = await User.findById(req.body.userid);
+       const user = await User.findOne({userid:req.body.userid});
         if(user.resetpass==req.body.resetpass){
             res.status(200).send("verified");
         }
