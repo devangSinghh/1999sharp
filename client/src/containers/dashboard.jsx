@@ -31,11 +31,6 @@ class Dashboard extends Component {
                             <Calendar/>
                         </div>
                         <hr className="divider"/>
-                        <form className="add-event-form" action="">
-                            <input type="text"/>
-                            
-                        </form>
-                        <button onClick={this.openResolution}>Add event</button>
                     </div>
                     <div className="col-md-9 p-0 dash-right-panel">
                         <Navbar/>

@@ -24,7 +24,10 @@ class ContextMenu extends Component {
 
     handleContextMenu = (e) => {
         e.preventDefault()
-
+        const rect = document.getElementById('contextmenu').getBoundingClientRect 
+        if (rect.x + rect.width < 0 || (rect.y + rect.height) < 0 || rect.x > window.innerWidth || rect.y > window.innerHeight) {
+            this.setState({ xPos: `${e.pageX}px`, yPos: `${e.pageY}px`, showMenu: true })
+        }
         this.setState({ xPos: `${e.pageX}px`, yPos: `${e.pageY}px`, showMenu: true })
 
     }
@@ -32,7 +35,7 @@ class ContextMenu extends Component {
     render() {
         const { showMenu, xPos, yPos } = this.state
         return (
-            <div className="context-menu" style={{position:'absolute', top: yPos, left: xPos }}>
+            <div className="context-menu" id="contextmenu" style={{position:'absolute', top: yPos, left: xPos }}>
                 {showMenu && <ul className="">
                     <li>Login</li>
                     <li>Register</li>

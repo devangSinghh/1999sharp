@@ -37,7 +37,7 @@ function App() {
       <Router>
         <Switch>
           <Route path="/" exact component={Calendar} />
-          <Route path="/d" component={Dashboard} />
+          <Route path="/home" component={Dashboard} />
         </Switch>
         </Router>
     </div>

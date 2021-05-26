@@ -19,17 +19,17 @@ export default class Calendar extends Component {
     }
 
     handleDateClick = async arg => {
-        // if (window.confirm("Would you like to add an event to " + arg.dateStr + " ?")) {
-        //   this.setState({
-        //     // add new event data
-        //     calendarEvents: this.state.calendarEvents.concat({
-        //       // creates a new array
-        //       title: "New Event",
-        //       start: arg.date,
-        //       allDay: arg.allDay
-        //     })
-        //   });
-        // }
+        if (window.confirm("Would you like to add an event to " + arg.dateStr + " ?")) {
+          this.setState({
+            // add new event data
+            calendarEvents: this.state.calendarEvents.concat({
+              // creates a new array
+              title: "New Event",
+              start: arg.date,
+              allDay: arg.allDay
+            })
+          });
+        }
         const payload = {
             title: "events",
             description: "This is event 1",
@@ -65,13 +65,15 @@ export default class Calendar extends Component {
             dateClick={this.handleDateClick}
             ref={this.ref}
             eventContent={renderEventContent}
-            themeSystem="standard"
+            // themeSystem="standard"
             weekends={this.state.calendarWeekends}
             events={this.state.calendarEvents}
-            customButtons = {this.customButtons}
+            // customButtons = {this.customButtons}
             headerToolbar= {{
                 // center: 'dayGridMonth,timeGridWeek,timeGridDay',
-                right : 'prevYear prev today next nextYear'
+                start: '',
+                center : 'prevYear prev title next nextYear',
+                end : ''
             }}
             />
         </div>

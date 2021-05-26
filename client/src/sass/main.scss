@@ -8,7 +8,12 @@
 @import './calendar';
 @import './table';
 @import './resolution';
+@import './modal';
+@import './eventToggle';
+@import './resizable';
+@import './eachday';
 
 body {
+    font-family: $font-4 !important;
     overflow-x: hidden;
 }

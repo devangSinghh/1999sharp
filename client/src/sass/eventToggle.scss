@@ -1,0 +1,81 @@
+.event-toggle {
+    position: absolute;
+    // padding: 1.4rem;
+    pointer-events: none;
+    transform: translateY(20px);
+    transition: all 0.3s;
+    overflow-x: hidden !important;
+    z-index: 4000;
+    opacity: 0;
+    border-top-left-radius: 0.5rem;
+    background-color: rgb(255, 255, 255);
+    // animation: moveitback 400ms ease forwards; 
+    border-bottom-left-radius: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    height: 50px;
+    overflow: hidden;
+    ul {
+      display: none;
+    }
+}
+
+.event-toggle-open {
+    position: absolute;
+    z-index: 4000;
+    height: 107px;
+    transition: all 0.3s;
+    // animation: moveit 900ms ease forwards;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    ul {
+      transition: all 0.5s;
+      -webkit-animation: 0.4s ease 0s normal  1 fadein;
+      animation: 0.4s ease 0s normal  1 fadein;
+    }
+}
+
+.event-toggle, .event-toggle-open {
+  width: 150px;
+  border-radius: 0.4rem;
+    ul {
+      margin: 0.6rem auto;
+      padding-left: 0;
+      list-style: none;
+      li {
+        padding: 0.3rem;
+        &:hover {
+          cursor: default;
+          background-color: rgba(rgb(219, 219, 219), 0.2);
+        }
+      }
+    }
+}
+@keyframes fadein{
+  0% { opacity:0; }
+  66% { opacity:0; }
+  100% { opacity:1; }
+}
+
+@-webkit-keyframes fadein{
+  0% { opacity:0; }
+  66% { opacity:0; }
+  100% { opacity:1; }
+}
+// @keyframes moveit {
+//     0% { transform: translateY(0) scale3d(0.96,0.96,1); }
+//     20% { transform: translateY(10px) scale3d(1.1,1.1,1); }
+//     40% { transform: translateY(8px) scale3d(0.98,0.98,1); }
+//     60% { transform: translateY(10px) scale3d(1.05,1.05,1); }
+//     // 80% { transform: translateY(30px) scale3d(1.01,1.01,1); }
+//     // 100% { transform: translateY(30px) scale3d(1,1,1); }
+//   }
+  
+//   @keyframes moveitback {
+//     0% { transform: translateY(10px); }
+//     100% { transform: translateY(0) scale3d(0.96,0.96,1); }
+//   }
+  
+//   @keyframes scale {
+//     0% { transform: scale3d(0.96,0.96,1); }
+//     100% { transform: scale3d(1,1,1); }
+//   }

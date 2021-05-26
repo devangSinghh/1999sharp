@@ -1,0 +1,30 @@
+.fade {
+    background-color: rgba(rgb(31, 31, 31), 0.33);
+}
+
+.modal-content {
+    height: 75vh;
+    border-radius: 1.5rem !important;
+
+    .modal-header {
+        .close {
+            display: none;
+        }
+    }
+}
+
+.add-event-form-button {
+    border: none;
+    width: 100px;
+    padding: 0.3rem;
+    border-radius: 0.3rem;
+    background-color: rgb(197, 197, 197);
+    transition: all 0.2s;
+    &:hover {
+
+    }
+
+    &:active {
+        transform: scale(0.98);
+    }
+}

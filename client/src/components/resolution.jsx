@@ -7,7 +7,7 @@ class Resolution extends Component {
     ref = React.createRef()
 
     componentDidMount = async() => {
-        document.addEventListener('click', this.handleClickOutside, true);
+        document.addEventListener('click', this.handleClickOutside, true)
     }
 
     componentWillUnmount = async() => {
@@ -17,7 +17,7 @@ class Resolution extends Component {
         if (this.ref.current && !this.ref.current.contains(e.target)) {
             this.props.closeResolution()
         }
-    };
+    }
 
     render() {
         return (

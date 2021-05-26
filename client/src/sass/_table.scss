@@ -1,4 +1,6 @@
 .event-table {
+    font-family: $font-4;
+    width: 100%;
     margin-top: 1.5rem;
     thead {
         border-top-left-radius: 0.36rem !important;
@@ -7,11 +9,11 @@
     &-head {
         width: 100%;
         font-family: $font-4;
-        font-weight: 600 !important;
+        font-weight: 500 !important;
         color: rgb(68, 68, 68);
-        background-color: rgba(rgb(219, 218, 218), 0.2);
-        border-top-left-radius: 0.36rem !important;
-        border-top-right-radius: 0.36rem !important; 
+        // background-color: rgba(rgb(219, 218, 218), 0.2);
+        // border-top-left-radius: 0.36rem !important;
+        // border-top-right-radius: 0.36rem !important; 
         th {
             padding: 0.4rem !important;
             &:first-child {
@@ -28,12 +30,31 @@
     transition: all 0.3s;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     &:hover {
+        cursor: default !important;
         // box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     }
 }
 
 .event-number {
-    font-family: $font-2;
+    font-family: $font-4;
     font-size: 14px;
     color: grey;
+}
+.MuiTableContainer-root {
+    // box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px !important;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px !important;
+    // box-shadow:0 3px 11px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.15) !important;
+    border-radius: 0.4rem; 
+    .MuiTableCell-root {
+        border: none !important;
+        font-family: $font-4 !important;
+    }
+}
+
+.MuiTableCell-head {
+    font-weight: 700 !important;
+}
+
+.s-e-h {
+    font-size: 25px;
 }

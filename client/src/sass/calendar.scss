@@ -17,10 +17,11 @@
         }
     }
     border-radius: 0.4rem;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    // box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
+.fc-scrollgrid { border: none !important; } //very important
 .fc-col-header-cell-cushion {
-    font-family: $font-2;
+    font-family: $font-5;
     font-weight: 500 !important;
     color: rgb(56, 56, 56) !important;
     &:hover {
@@ -77,14 +78,35 @@
 }
 
 .fc-toolbar-title {
-    font-family: $font-2;
+    font-family: $font-4;
     color: rgb(44, 44, 44);
     font-size: 17px !important;
 }
-
-
+.fc-daygrid-day-number {
+    font-family: $font-5 !important;
+}
+.fc-theme-standard td, .fc-theme-standard th {
+    border: none !important;
+}
+.fc-toolbar-chunk {
+    display: flex !important; 
+    h2 {
+        display: flex;
+        // margin: 0 0.3rem !important;
+        width: 140px;
+        text-align: center !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    // width: 100% !important;
+}
 //buttons
 .fc {
+    
+    &-button-primary {
+        border: none !important;
+        border-color: transparent !important;
+    }
     .fc-icon {
         display: flex;
         align-items: center;
@@ -102,7 +124,13 @@
         border-left: none !important;
         padding :0.3rem !important;
         margin-left: 0 !important;
+        border: none !important;
         // height: 30px;
+        &:focus {
+            border-color: transparent !important;
+            box-shadow: none !important;
+        }
+        
     }
     &-today-button {
         padding :0.3rem !important;
@@ -111,6 +139,12 @@
         background-color: transparent !important;
         margin-left: 0 !important;
         border-radius: 0 !important;
+        border: none !important;
+
+        &:focus {
+            border-color: transparent !important;
+            box-shadow: none !important;
+        }
     }
     &-next-button {
         padding :0.3rem !important;
@@ -121,6 +155,11 @@
         border-radius: 0 !important;
         border-right: none !important;
         border-left:  none !important;
+        border: none !important;
+        &:focus {
+            border-color: transparent !important;
+            box-shadow: none !important;
+        }
     }
     &-prevYear-button {
         padding :0.3rem !important;
@@ -129,7 +168,12 @@
         color: black !important;
         background-color: transparent !important;
         border-top-right-radius: 0 !important;
-        border-bottom-right-radius: 0 !important;  
+        border-bottom-right-radius: 0 !important;
+        border: none !important;  
+        &:focus {
+            border-color: transparent !important;
+            box-shadow: none !important;
+        }
     }
     &-nextYear-button {
         padding :0.3rem !important;
@@ -138,6 +182,11 @@
         color: black !important;
         background-color: transparent !important;
         border-top-left-radius: 0 !important;
-        border-bottom-left-radius: 0 !important;  
+        border-bottom-left-radius: 0 !important; 
+        border: none !important; 
+        &:focus {
+            border-color: transparent !important;
+            box-shadow: none !important;
+        }
     }
 }
